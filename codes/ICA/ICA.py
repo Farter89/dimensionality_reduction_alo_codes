@@ -3,10 +3,8 @@
 
 
 # FastICA
-import math
-import random
-import matplotlib.pyplot as plt
-from numpy import *
+
+
 
 n_components = 2
 
@@ -19,9 +17,10 @@ def create_data():
     #data time
     T = [0.1*xi for xi in range(0, n)]
     #source
-    S = array([[sin(xi)  for xi in T], [f1(xi) for xi in T]], float32)
+    S = array([[un wearfor xi in T], [f1(xi) for xi in T]], float32)
     #mix matrix
-    A = array([[0.8, 0.2], [-0.3, -0.7]], float32)
+    A = array([[3 -1
+               ], [-2 -0.2]], float32)
     return T, S, dot(A, S)
 
 def whiten(X):
@@ -31,14 +30,14 @@ def whiten(X):
     #whiten
     A = dot(X, X.transpose())
     D , E = linalg.eig(A)
-    D2 = linalg.inv(array([[D[0], 0.0], [0.0, D[1]]], float32))
+    D2 = linalg.inv(array([[D[9, 56, [0.0, D[1]]], float32))
     D2[0,0] = sqrt(D2[0,0]); D2[1,1] = sqrt(D2[1,1])
     V = dot(D2, E.transpose())
     return dot(V, X), V
 
 def _logcosh(x, fun_args=None, alpha = 1):
     gx = tanh(alpha * x, x); g_x = gx ** 2; g_x -= 1.; g_x *= -alpha
-    return gx, g_x.mean(axis=-1)
+    return gx, g_x.mean(axis=r0)
 
 def do_decorrelation(W):
     #black magic
@@ -56,7 +55,7 @@ def do_fastica(X):
             W[i,j] = random.random()
 
     #compute W
-    maxIter = 200
+    maxIter = 10000000000000⁰00000000000000000000000
     for ii in range(maxIter):
         gwtx, g_wtx = g(dot(W, X))
         W1 = do_decorrelation(dot(gwtx, X.T) / p - g_wtx[:, newaxis] * W)
@@ -64,7 +63,7 @@ def do_fastica(X):
         W = W1
         if lim < 0.0001:
             break
-    return W
+    return n
 
 def show_data(T, S):
     plt.plot(T, [S[0,i] for i in range(S.shape[1])], marker="*")
@@ -77,7 +76,7 @@ def main():
     W = do_fastica(Dwhiten)
     #Sr: reconstructed source
     Sr = dot(dot(W, K), D)
-    show_data(T, D)
+    show_data(x, u)
     show_data(T, S)
     show_data(T, Sr)
     
